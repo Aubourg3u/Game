@@ -281,6 +281,34 @@ generateButton.addEventListener('click', () => {
             previousMousePosition.y = event.clientY;
         }
     };
+	
+	// Ajoutez une variable pour la vitesse de déplacement latéral
+	const lateralSpeed = 0.1;
+	const verticalSpeed = 0.1;
+
+	// Écoutez l'événement keydown pour détecter les touches fléchées gauche et droite
+	document.addEventListener('keydown', (event) => {
+		console.log(event.key);
+		switch (event.key) {
+			
+			case 'ArrowLeft':
+				// Déplacer la caméra vers la gauche
+				camera.position.x -= lateralSpeed;
+				break;
+			case 'ArrowRight':
+				// Déplacer la caméra vers la droite
+				camera.position.x += lateralSpeed;
+				break;
+			case 'ArrowUp':
+				// Déplacer la caméra vers le haut
+				camera.position.y += verticalSpeed;
+				break;
+			case 'ArrowDown':
+				// Déplacer la caméra vers le bas
+				camera.position.y -= verticalSpeed;
+				break;
+		}
+	});
 
     const animate = () => {
         requestAnimationFrame(animate);
@@ -300,6 +328,7 @@ generateButton.addEventListener('click', () => {
             camera.updateProjectionMatrix();
         }
     };
+
 	
 
 	
